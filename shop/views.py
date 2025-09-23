@@ -72,7 +72,11 @@ def create_json(list_products: list, list_filter: list):
     for product in list_products:
         dict_product = {
             'product_name': product.product_name,
-            'type_product': product.type_product
+            'type_product': product.type_product,
+            'price': product.price,
+            'discount': product.discount,
+            'count': product.count,
+            'description': product.description
         }
         list_filter.append(dict_product)
 
