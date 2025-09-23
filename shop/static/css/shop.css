@@ -1,0 +1,20 @@
+.create-product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 400px;
+    height: 300px;
+}
+.create-product form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+}
+h1{
+    color: blue;
+}

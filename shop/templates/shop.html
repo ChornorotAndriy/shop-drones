@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Shop
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('shop.static', filename = 'css/shop.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1> Shop PAGE</h1>
+
+    <!-- Форма створення продукту -->
+    {% if current_user.is_admin %}
+        <div class="create-product">
+            <form action="/shop?type=add_product" method="post" enctype="multipart/form-data">
+
+                <input type="text" name="product_name" placeholder="">
+                <input type="number" name="price" placeholder="">
+                <input type="number" name="discount" placeholder="">
+                <input type="number" name="count" placeholder="">
+
+                <textarea name="description" placeholder=""></textarea>
+
+                <input type="file" name="image" accept="image/*" placeholder="Оберіть зображення">
+
+                <button type="submit">CREATE</button>
+            </form>
+            {% if message %}
+                <p>{{ message }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!--  -->
+
+    <select name="type_product" id="select">
+        <option value="all">all</option>
+        {% for product in type_products %}
+            <option value="{{ product.type_product }}">{{ product.type_product }}</option>
+        {% endfor %}
+    </select>
+    <button type="button" id="filter">Фільтрувати</button>
+
+    <!--  -->
+    <div id="products">
+        {% if list_product %}
+            {% for product in list_product %}
+                <div class = 'product'>
+                    <hr>
+                    <img src="{{ url_for('shop.static', filename = 'images/products/' + product.product_name + '.png') }}" alt="{{product.product_name}}" width="300px" height="300px">
+                    <h4>Назва продукту: {{ product.product_name }}</h4>
+                    <p>Вартість за одиницю продукту: {{ product.price }}</p>
+                    <p>Знижка на одиницю продукту: {{ product.discount }}</p>
+                    <p>Кількість продукту у магазині: {{ product.count }}</p>
+                    <p>Опис продукту: {{ product.description }}</p>
+    
+                    <button class="buy" id="{{product.id}}" type="button">BUY</button>
+                    <!-- get -->
+                    {% if current_user.is_admin %}
+                        <p>
+                            <a href= "/delete_product?id={{product.id}}">DELETE</a>
+                        </p>
+                    {% endif %}
+                    <hr>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <!-- Відображення списку всіх продуктів із бази даних -->
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('shop.static', filename = 'js/jquery-3.7.1.js') }}"></script>
+    <script src="{{ url_for('shop.static', filename = 'js/filter.js') }}"></script>
+    <script src="{{ url_for('shop.static', filename = 'js/addIdProductInCookies.js') }}"></script>
+{% endblock %}
+
+
+
+

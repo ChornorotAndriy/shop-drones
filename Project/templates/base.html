@@ -1,0 +1,30 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'base.css') }}">
+        {% block links %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/shop">Shop</a>
+                <a href="/cart">CART</a>
+                {% if current_user.is_authenticated %}
+                    <p>{{ current_user.username }}</p>
+                    <!--  -->
+                    <a href="/logout">Exit</a>
+                {% else %}   
+                    <a href="/registration">Create an account</a>
+                    <a href="/authorization">Sign in</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main> 
+        {% block scripts %}{% endblock %} 
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Authorization
+{% endblock %}
+
+{%block links%}
+    <link rel="stylesheet"href="">
+{% endblock %}
+
+{% block content %}
+    <div class = 'authorization'>
+        <h3>Форма авторизації</h3>
+        <form action="" method = "post">
+
+            <input type="text" name = "username" placeholder="Задайте ваше ім'я">
+            <input type="password" name = "password" placeholder="Задайте ваш пароль">
+
+            <button type="sumbit">Увійти</button>
+        </form>
+    </div>
+{% endblock %}
