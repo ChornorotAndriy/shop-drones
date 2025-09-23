@@ -15,7 +15,11 @@ $(document).ready(function(){
                 for (let product of response['products']){
                     let productDiv = $('<div>', {class: 'product'})
                     productDiv.append($('<img>', {src: `/shop/static/images/products/${product.product_name}.png`, width: '300px', height: '300px'}))
-                    productDiv.append($('<h1>', {text: 'Назва продукту: ' + product.product_name}))
+                    productDiv.append($('<h4>', {text: 'Назва продукту: ' + product.product_name}))
+                    productDiv.append($('<p>', {text: 'Ціна продукту: ' + product.price}))
+                    productDiv.append($('<p>', {text: 'знижка на продукт: ' + product.discount}))
+                    productDiv.append($('<p>', {text: 'Кількість продукту: ' + product.count}))
+                    productDiv.append($('<p>', {text: 'Опис продукту: ' + product.description}))
                     $("#products").append(productDiv)
                 }
                 // let html = ''
