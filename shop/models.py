@@ -10,3 +10,5 @@ class Product(DATABASE.Model):
     description = DATABASE.Column(DATABASE.String(500), default = "description")
     # 
     type_product = DATABASE.Column(DATABASE.String(50), default = "product_type")
+    #
+    

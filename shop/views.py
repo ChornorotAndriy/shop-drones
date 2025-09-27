@@ -76,7 +76,8 @@ def create_json(list_products: list, list_filter: list):
             'price': product.price,
             'discount': product.discount,
             'count': product.count,
-            'description': product.description
+            'description': product.description,
+            'product_id': product.id
         }
         list_filter.append(dict_product)
 
@@ -89,4 +90,7 @@ def filter():
         list_products = Product.query.all()
         
     create_json(list_products= list_products, list_filter= list_filter)
-    return  {'products': list_filter}
+    return  {
+        'products': list_filter,
+        'is_admin': current_user.is_admin if current_user.is_authenticated else False
+    }
