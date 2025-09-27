@@ -22,6 +22,7 @@ $(document).ready(function(){
                     productDiv.append($('<p>', {text: 'Кількість продукту: ' + product.count}))
                     productDiv.append($('<p>', {text: 'Опис продукту: ' + product.description}))
                     productDiv.append($('<button>', {class: "buy", id: `${product.id}`, type:"button", text: "buy"}))
+                    roductDiv.append($('<button>', {class: "delete", 'data_id': `${product.id}`, text: 'Delete'}))
 
                     productDiv.append($('<hr>'))
                     
@@ -45,3 +46,6 @@ $(document).ready(function(){
         })
     })
 })
+$(document).on('click', '.delete', function(){
+    $.get(`/delete_product?id=${$(this).data('id')}`, () => $(this).closest('.product').remove());
+});

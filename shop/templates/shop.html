@@ -55,7 +55,7 @@
                     <p>Знижка на одиницю продукту: {{ product.discount }}</p>
                     <p>Кількість продукту у магазині: {{ product.count }}</p>
                     <p>Опис продукту: {{ product.description }}</p>
-    
+                    <button class="delete" data_id="{{product.id}}">DELETE</button>
                     <button class="buy" id="{{product.id}}" type="button">BUY</button>
                     <!-- get -->
                     {% if current_user.is_admin %}
