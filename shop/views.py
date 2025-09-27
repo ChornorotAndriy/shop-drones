@@ -55,7 +55,7 @@ def delete_product():
         DATABASE.session.commit()
         #
         os.remove(path= os.path.abspath(os.path.join(__file__, '..', 'static', 'images', 'products', f'{get_model_product.product_name}.png')))
-    return flask.jsonify({'success': True})
+
 #
 def add_product_cookies():
     list_id_products = flask.request.cookies.get(key= 'list_products')
